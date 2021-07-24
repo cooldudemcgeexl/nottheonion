@@ -7,8 +7,6 @@ services:
       CHOKIDAR_USEPOLLING: "true"
     volumes:
       - ./client:/app
-    ports:
-      - "6969:3000"
 
   server:
     build:
@@ -16,5 +14,11 @@ services:
       dockerfile: ./Dockerfile
     volumes:
       - ./server:/app
+
+  nginx:
+    build: nginx
     ports:
-      - "6968:5000"
+      - 6969:80
+    depends_on:
+      - client
+      - server
