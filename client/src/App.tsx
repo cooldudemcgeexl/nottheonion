@@ -3,7 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import { useCallback } from "react";
 
-import GenerateButton from './components/GenerateButton'
+import GenerateButton from "./components/GenerateButton";
 
 function App() {
   const handleButtonClick = useCallback(() => {
@@ -13,11 +13,19 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <span style={{ fontSize: "40px" }}> <span style={{fontWeight:'bold'}}>Not</span> The Onion</span>
-       
+        <span
+          style={{
+            fontSize: "40px",
+            color: "black",
+            //textShadow: "2px 2px 14px black"   maybe add drop shadow to title if we want!
+          }}
+        >
+          {" "}
+          <span style={{ fontWeight: "bold" }}>Not</span> The Onion
+        </span>
 
         <p></p>
-       <GenerateButton></GenerateButton>
+        <GenerateButton />
       </header>
     </div>
   );

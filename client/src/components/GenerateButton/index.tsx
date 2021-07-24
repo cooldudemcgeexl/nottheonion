@@ -1,13 +1,17 @@
 import { FC } from "react";
 
-import { ButtonContainer } from "./StyledComponents";
+import "./styles.scss";
 
-const GenerateButton: FC = () => {
-    return(
-        <ButtonContainer>
-            <button>Generate New Article</button>
-        </ButtonContainer>
-    );
+type GenButtonProps = {
+  handleButtonClick?: () => void;
+};
+
+const GenerateButton: FC<GenButtonProps> = ({ handleButtonClick }) => {
+  return (
+    <button className="Gen-Button-Style" onClick={handleButtonClick}>
+      Generate New Article
+    </button>
+  );
 };
 
 export default GenerateButton;
