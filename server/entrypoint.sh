@@ -1,3 +1,4 @@
 #!/bin/bash
 
-python3 src/server.py
+cd src/
+python3 server.py
