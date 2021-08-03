@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: #f3f3d4;
 }
 
 .App-logo {
@@ -14,14 +15,19 @@
 }
 /*#282c34 discord background colors */
 .App-header {
-  background-color: #f3f3d4 ;
-  min-height: 100vh;
+  background-color: #98ff98;
+  height: 2em;
   display: flex;
+  width: 100%;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: black;
+  padding: .5em;
+  box-shadow: 2px 2px 2px black;
+  position: relative;
 }
 
 .App-link {
