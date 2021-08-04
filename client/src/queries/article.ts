@@ -1,10 +1,18 @@
 import { gql } from "@apollo/client";
 
 export const articleQuery = gql`
-    {
-        articleID
-        articleHeadline
-        articleText
-        imageUrl
+  query Article($inputID: Int!) {
+    article(inputID: $inputID) {
+      articleID
+      articleHeadline
+      articleText
+      imageUrl
     }
+  }
+`;
+
+export const numArticlesQuery = gql`
+  query NumArticles {
+    numArticles
+  }
 `;
