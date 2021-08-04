@@ -12,7 +12,7 @@ openai.organization = os.getenv("OPENAI_ORG_ID")
 openai.api_key = os.getenv("OPENAI_API_KEY")
 gis = GoogleImagesSearch(os.getenv("GOOGLE_API_KEY"), os.getenv("GOOGLE_CX"))
 
-ARTICLES_FILE = 'articles.json'
+ARTICLES_FILE = '../server/articles.json'
 
 
 def load_json_dict() -> dict:
@@ -46,8 +46,8 @@ def search_google_images(headline: str) -> str:
 
 def generate_headline():
     response = openai.Completion.create(
-        engine="davinci",
-        prompt="Generate a headline for The Onion:\n",
+        engine="davinci-instruct-beta",
+        prompt="Write a headline for The Onion:\n",
         temperature=0.9,
         max_tokens=16,
         top_p=1,
@@ -56,18 +56,22 @@ def generate_headline():
         stop=["\\n", "\\n\\n"]
     )
     for choice in response.choices:
-        print(f'Response: {choice.text}\nAccept [y/n]? ')
-        user_input = input()
-        if user_input == 'y':
-            return choice.text
-        else:
-            return None
+        for headline in choice.text.splitlines():
+            if len(headline) == 0:
+                continue
+            print(f'Response: {headline}\nAccept [y/n]? ')
+            user_input = input()
+            if user_input == 'y':
+                return headline
+            else:
+                return None
 
 
 def generate_article(headline: str):
+    generator_prompt = f"Write a satircal news article with the headline \"{headline}\"\n\n"
     response = openai.Completion.create(
-        engine="davinci",
-        prompt=f"Generate an article for The Onion with the headline \"{headline}\"\n\n",
+        engine="davinci-instruct-beta",
+        prompt=generator_prompt,
         temperature=0.7,
         max_tokens=256,
         top_p=1,
