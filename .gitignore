@@ -3,3 +3,5 @@ client/node_modules/
 server/.venv
 server/__pycache__
 server/src/__pycache__
+article-script/.venv
+article-script/.env
