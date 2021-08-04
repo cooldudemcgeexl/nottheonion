@@ -1,13 +1,16 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { useQuery } from "@apollo/client";
 import { ArticleQueryResult } from "./queries/queryTypes";
 import { articleQuery } from "./queries/article";
 import GenerateButton from "./components/GenerateButton";
+import GenerateLightButton from "./components/ThemeButton";
 
 function App() {
+  const [isLightMode, setLightMode] = useState(true);
+
   const { data: article } = useQuery<ArticleQueryResult>(articleQuery);
 
   const handleButtonClick = useCallback(() => {
@@ -16,23 +19,28 @@ function App() {
     );
   }, []);
 
+  const handleLightButtonClick = useCallback(() => {
+    setLightMode(!isLightMode);
+  }, [isLightMode]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <span
-          style={{
-            fontSize: "40px",
-            color: "black",
-            //textShadow: "2px 2px 14px black"   maybe add drop shadow to title if we want!
-          }}
-        >
-          <span style={{ fontWeight: "bold" }}>Not</span> The Onion
+    <div className={isLightMode ? "App" : "App-Dark"}>
+      <header className={isLightMode ? "App-Header" : "App-Header-Dark"}>
+        <span>
+          <span style={{ fontWeight: "bold" }}>Not</span> The Onion{" "}
         </span>
+        <GenerateButton
+          handleButtonClick={handleButtonClick}
+          isLightMode={isLightMode}
+        />
       </header>
-      <body>
+      <body className={isLightMode ? "Body" : "Body-Dark"}>
         {article?.articleID}
         <p></p>
-        <GenerateButton handleButtonClick={handleButtonClick} />
+        <GenerateLightButton
+          handleLightButtonClick={handleLightButtonClick}
+          isLightMode={isLightMode}
+        />
       </body>
     </div>
   );

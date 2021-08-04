@@ -1,10 +1,15 @@
-.Gen-Button-Style {
+.Gen-Button-Float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  right: 40px;
   border: 0px black;
   font-size: 20px;
   padding: 10px 30px;
   margin: 10px 0px;
   background-color: #e09c9c;
-  color: black;
+  color: white;
   // text-shadow: 2px 2px 8px black; used in discord version
   box-shadow: 2px 2px 10px black;
   transition: ease background-color 250ms;
@@ -13,8 +18,12 @@
     background-color: #dd8888;
   }
 }
-
-.Gen-Button-Style-Dark {
+.Gen-Button-Float-Dark {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  right: 40px;
   border: 0px black;
   font-size: 20px;
   padding: 10px 30px;
@@ -29,7 +38,3 @@
     background-color: #283593;
   }
 }
-
-// discord colors
-// #3f51b5 default button
-// #283593 hover button

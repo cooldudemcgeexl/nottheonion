@@ -1,6 +1,17 @@
 .App {
   text-align: center;
   background-color: #f3f3d4;
+  transition: ease background-color 250ms;
+  height: 100vh;
+  min-height: 100vh;
+}
+
+.App-Dark {
+  text-align: center;
+  background-color: #282c34;
+  transition: ease background-color 250ms;
+  height: 100vh;
+  min-height: 100vh;
 }
 
 .App-logo {
@@ -13,24 +24,57 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-/*#282c34 discord background colors */
-.App-header {
-  background-color: #98ff98;
-  height: 2em;
+
+.App-Header {
+  background-color: #f2f3a9;
+  max-height: 400%;
   display: flex;
   width: 100%;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  flex-direction: row;
   align-items: center;
   text-align: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: black;
-  padding: .5em;
+  padding: 0.5em;
   box-shadow: 2px 2px 2px black;
   position: relative;
+  transition: ease background-color 250ms;
+}
+.App-Header-Dark {
+  background-color: #1f071d;
+  max-height: 400%;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  padding: 0.5em;
+  box-shadow: 2px 2px 2px black;
+  position: relative;
+  transition: ease background-color 250ms;
 }
 
 .App-link {
   color: #61dafb;
 }
 
+.Body {
+  text-align: center;
+  background-color: #f3f3d4;
+  transition: ease background-color 250ms;
+}
+
+.Body-Dark {
+  text-align: center;
+  background-color: #282c34;
+  color: white;
+  transition: ease background-color 250ms;
+}
+
+/*#282c34 discord background colors */
