@@ -7,7 +7,7 @@ type GenButtonProps = {
   handleButtonClick?: () => void;
 };
 
-const GenerateButton: FC<GenButtonProps> = ({
+export const GenerateButton: FC<GenButtonProps> = ({
   isLightMode,
   handleButtonClick,
 }) => {
@@ -20,5 +20,3 @@ const GenerateButton: FC<GenButtonProps> = ({
     </button>
   );
 };
-
-export default GenerateButton;

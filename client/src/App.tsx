@@ -1,27 +1,30 @@
-import React from "react";
+import { FC, useCallback, useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { useCallback, useState } from "react";
 import { useQuery } from "@apollo/client";
-import { ArticleQueryResult } from "./queries/queryTypes";
-import { articleQuery } from "./queries/article";
-import GenerateButton from "./components/GenerateButton";
-import GenerateLightButton from "./components/ThemeButton";
+import { NumArticlesResult, numArticlesQuery } from "./queries";
+import {
+  GenerateButton,
+  GenerateLightButton,
+  ArticleContent,
+} from "./components";
 
-function App() {
+const App: FC = () => {
   const [isLightMode, setLightMode] = useState(true);
-
-  const { data: article } = useQuery<ArticleQueryResult>(articleQuery);
-
-  const handleButtonClick = useCallback(() => {
-    alert(
-      `Article title: ${article?.articleID}\nArticle Headline: ${article?.articleHeadline}\nArticle Text: ${article?.articleText}\nImage URL: ${article?.imageUrl}`
-    );
-  }, []);
 
   const handleLightButtonClick = useCallback(() => {
     setLightMode(!isLightMode);
   }, [isLightMode]);
+
+  const { data } = useQuery<NumArticlesResult>(numArticlesQuery);
+
+  const numArticles = data?.numArticles ?? 0;
+
+  const [updateFlip, setUpdate] = useState(false);
+
+  const handleButtonClick = useCallback(() => {
+    setUpdate(!updateFlip);
+  }, [updateFlip]);
 
   return (
     <div className={isLightMode ? "App" : "App-Dark"}>
@@ -35,15 +38,14 @@ function App() {
         />
       </header>
       <body className={isLightMode ? "Body" : "Body-Dark"}>
-        {article?.articleID}
-        <p></p>
-        <GenerateLightButton
-          handleLightButtonClick={handleLightButtonClick}
-          isLightMode={isLightMode}
-        />
+        <ArticleContent numArticles={numArticles} />
       </body>
+      <GenerateLightButton
+        handleLightButtonClick={handleLightButtonClick}
+        isLightMode={isLightMode}
+      />
     </div>
   );
-}
+};
 
 export default App;
