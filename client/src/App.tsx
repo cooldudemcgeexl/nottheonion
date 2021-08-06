@@ -1,8 +1,6 @@
 import { FC, useCallback, useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { useQuery } from "@apollo/client";
-import { NumArticlesResult, numArticlesQuery } from "./queries";
 import {
   GenerateButton,
   GenerateLightButton,
@@ -16,15 +14,11 @@ const App: FC = () => {
     setLightMode(!isLightMode);
   }, [isLightMode]);
 
-  const { data } = useQuery<NumArticlesResult>(numArticlesQuery);
-
-  const numArticles = data?.numArticles ?? 0;
-
-  const [updateFlip, setUpdate] = useState(false);
+  const [updateNum, setUpdate] = useState(0);
 
   const handleButtonClick = useCallback(() => {
-    setUpdate(!updateFlip);
-  }, [updateFlip]);
+    setUpdate(updateNum + 1);
+  }, [updateNum]);
 
   return (
     <div className={isLightMode ? "App" : "App-Dark"}>
@@ -38,7 +32,7 @@ const App: FC = () => {
         />
       </header>
       <body className={isLightMode ? "Body" : "Body-Dark"}>
-        <ArticleContent numArticles={numArticles} />
+        <ArticleContent inputID={updateNum} />
       </body>
       <GenerateLightButton
         handleLightButtonClick={handleLightButtonClick}

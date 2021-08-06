@@ -1,14 +1,15 @@
-import { FC, useMemo } from "react";
+import { FC, useCallback, useMemo, useState } from "react";
 import { articleQuery, ArticleQueryResult } from "../../queries";
 import { useQuery } from "@apollo/client";
+import "./styles.scss";
 
 type ArticleContentProps = {
-  numArticles: number;
+  inputID: number;
 };
 
-export const ArticleContent: FC<ArticleContentProps> = ({ numArticles }) => {
+export const ArticleContent: FC<ArticleContentProps> = ({ inputID }) => {
   const { data } = useQuery<ArticleQueryResult>(articleQuery, {
-    variables: { inputID: Math.floor(Math.random() * numArticles) },
+    variables: { inputID },
   });
 
   const article = useMemo(() => {
@@ -17,11 +18,14 @@ export const ArticleContent: FC<ArticleContentProps> = ({ numArticles }) => {
 
   return (
     <div>
-      <p style={{ fontWeight: "bold", fontSize: "60px" }}>
-        {article?.articleHeadline ?? ""}
-      </p>
-      <img src={article?.imageUrl ?? ""} alt="" height="400px"></img>
-      <div>{article?.articleText ?? ""}</div>
+      <p className="Title-Styling">{article?.articleHeadline ?? ""}</p>
+      <img
+        className="Image-Styling"
+        src={article?.imageUrl ?? ""}
+        alt=""
+        height="400px"
+      ></img>
+      <div className="Article-Styling">&emsp;{article?.articleText ?? ""}</div>
     </div>
   );
 };

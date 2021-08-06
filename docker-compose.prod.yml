@@ -4,8 +4,7 @@ services:
       context: ./client
       dockerfile: ./Dockerfile
     environment:
-      CHOKIDAR_USEPOLLING: "true"
-      NODE_ENV: "development"
+      NODE_ENV: "production"
     volumes:
       - ./client:/app
 
@@ -19,7 +18,7 @@ services:
   nginx:
     build: nginx
     ports:
-      - 6969:80
+      - 80:80
     depends_on:
       - client
       - server

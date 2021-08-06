@@ -1,10 +1,10 @@
 server {
     listen 80;
-    server_name localhost;
+    server_name www.nottheonion.xyz;
     location / {
         proxy_pass http://client:3000;
     }
-    location /flask/ {
+    location /server/ {
         proxy_pass http://server:5000/;
     }
 }

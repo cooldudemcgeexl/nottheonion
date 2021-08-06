@@ -4,9 +4,10 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { serverURL } from "./constants/serverURL";
 
 const client = new ApolloClient({
-  uri: "http://localhost:6969/flask/graphql",
+  uri: `http://${serverURL}/server/graphql`,
   cache: new InMemoryCache(),
 });
 
