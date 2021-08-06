@@ -23,10 +23,10 @@ def get_article_schema():
         }
 
         type Article {
-            articleID: Int!
-            articleHeadline: String!
-            articleText: String!
-            imageUrl: String! 
+            articleID: Int
+            articleHeadline: String
+            articleText: String
+            imageUrl: String 
         }
 
     """

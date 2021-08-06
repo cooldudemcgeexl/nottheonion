@@ -1,4 +1,4 @@
-import { FC, useCallback, useMemo, useState } from "react";
+import { FC,  useMemo } from "react";
 import { articleQuery, ArticleQueryResult } from "../../queries";
 import { useQuery } from "@apollo/client";
 import "./styles.scss";
