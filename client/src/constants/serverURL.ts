@@ -1,2 +1,1 @@
-export const serverURL =
-  "www.nottheonion.xyz";
+export const serverURL = "localhost:6969";

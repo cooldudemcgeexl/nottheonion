@@ -1,4 +1,4 @@
-import { FC,  useMemo } from "react";
+import { FC, useMemo } from "react";
 import { articleQuery, ArticleQueryResult } from "../../queries";
 import { useQuery } from "@apollo/client";
 import "./styles.scss";
@@ -22,7 +22,7 @@ export const ArticleContent: FC<ArticleContentProps> = ({ inputID }) => {
       <img
         className="Image-Styling"
         src={article?.imageUrl ?? ""}
-        alt=""
+        alt="article content"
         height="400px"
       ></img>
       <div className="Article-Styling">&emsp;{article?.articleText ?? ""}</div>
