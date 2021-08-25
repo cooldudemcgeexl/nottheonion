@@ -2,7 +2,7 @@
 An AI-powered parody news website. Final project for Software Engineering class.
 
 ## What is it?
-**Not** The Onion is a wensite serving pre-generated articles designed to mimic the style of [The Onion](www.theonion.com). The articles are uncannily similar, hence the idea, "I can't believe it's **not** The Onion!"
+**Not** The Onion is a website serving pre-generated articles designed to mimic the style of [The Onion](www.theonion.com). The articles are uncannily similar, hence the idea, "I can't believe it's **not** The Onion!"
 
 All articles are generated using OpenAI's API. See the `article-script` folder for details. Output is curated.
 
