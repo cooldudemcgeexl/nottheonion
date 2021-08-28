@@ -2,6 +2,7 @@ version: "3"
 
 services:
   client:
+    restart: always
     env_file:
       - ./client/.env.production
     build:
@@ -14,6 +15,7 @@ services:
 
 
   server:
+    restart: always
     build:
       context: ./server
       dockerfile: ./Dockerfile
@@ -21,6 +23,7 @@ services:
       - ./server:/app
 
   nginx:
+    restart: always
     build: nginx
     ports:
       - 80:80
